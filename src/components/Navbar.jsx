@@ -48,7 +48,7 @@ export default function Navbar() {
           }}>
             Add Book
           </Link>
-          <Link to="/author-genre" style={{
+          <Link to="/author-mgmt" style={{
             color: 'white',
             textDecoration: 'none',
             padding: '0.5rem 1rem'

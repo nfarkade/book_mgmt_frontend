@@ -1,4 +1,4 @@
-# 📚 Book Management & AI RAG Platform (UI)
+# 📚 Book Management & AI RAG Platform (Frontend)
 
 ## Overview
 **Book Management & AI RAG Platform** is a **React-based web application** that provides end-to-end management of **books, authors, genres, and documents**, along with **AI-powered Retrieval-Augmented Generation (RAG) search** and **document summarization**.
@@ -37,7 +37,7 @@ The application is designed as an **enterprise-ready frontend** that integrates 
 |------|------------|
 | Authentication | Secure login & logout |
 | Books | Book CRUD with author & genre mapping |
-| Authors & Genres | Independent CRUD management |
+| Authors Management | Independent CRUD management |
 | Documents | Upload, manage, summarize |
 | RAG Search | AI-powered document search |
 | Ingestion | Background document processing |
@@ -51,7 +51,7 @@ The application is designed as an **enterprise-ready frontend** that integrates 
 /login              → Authentication
 /books              → Book management
 /add-book           → Create or update books
-/author-genre       → Authors & genres management
+/author-mgmt       → Authors management
 /documents          → Document management
 /summary            → Document summary generation
 /rag                → RAG-based search
@@ -124,7 +124,7 @@ The backend should expose APIs for:
 ### Installation
 ```bash
 git clone <your-repo-url>
-cd book-management-ui
+cd book-management-frontend
 npm install
 ```
 
@@ -142,12 +142,12 @@ Access the application at:
 
 ### Build Image
 ```bash
-docker build -t book-mgmt-ui .
+docker build -t book-mgmt-frontend .
 ```
 
 ### Run Container
 ```bash
-docker run -p 3000:80 book-mgmt-ui
+docker run -p 3000:80 book-mgmt-frontend
 ```
 
 ---

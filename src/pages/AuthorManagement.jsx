@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getAuthors, createAuthor, updateAuthor, deleteAuthor, getGenres, createGenre, updateGenre, deleteGenre } from "../api/books";
 import DataTable from 'react-data-table-component';
 
-export default function AuthorGenre() {
+export default function AuthorManagement() {
   const [activeTab, setActiveTab] = useState('authors');
   const [authors, setAuthors] = useState([]);
   const [genres, setGenres] = useState([]);
@@ -138,7 +138,7 @@ export default function AuthorGenre() {
   return (
     <div className="container">
       <div className="card">
-        <h2>Authors & Genres Management</h2>
+        <h2>Authors Management</h2>
         
         <div className="tabs">
           <button 
