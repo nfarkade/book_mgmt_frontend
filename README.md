@@ -95,7 +95,6 @@ The backend should expose APIs for:
 - User & Role Management
 - Imbibing & Processing
 
-> Mock data fallback is available when backend services are unavailable.
 
 ---
 
@@ -163,22 +162,6 @@ src/
 ├── styles/         # Global & responsive styles
 └── index.css
 ```
-
----
-
-## Mock Data Support
-The application includes **mock API fallbacks**, enabling:
-- Frontend development without backend
-- UI demos and testing
-- Faster contributor onboarding
-
----
-
-## Roadmap
-- Advanced RAG filtering
-- Role-based feature toggles
-- Search relevance tuning
-- Usage analytics dashboard
 
 ---
 
