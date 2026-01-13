@@ -53,7 +53,7 @@ export default function Navbar() {
             textDecoration: 'none',
             padding: '0.5rem 1rem'
           }}>
-            Authors & Genres
+            Authors Management
           </Link>
           <Link to="/documents" style={{
             color: 'white',
@@ -62,12 +62,12 @@ export default function Navbar() {
           }}>
             Documents
           </Link>
-          <Link to="/ingestion" style={{
+          <Link to="/imbibing" style={{
             color: 'white',
             textDecoration: 'none',
             padding: '0.5rem 1rem'
           }}>
-            Ingestion
+            Imbibing
           </Link>
           <Link to="/rag" style={{
             color: 'white',

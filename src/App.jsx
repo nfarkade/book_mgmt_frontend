@@ -6,7 +6,7 @@ import AddBook from "./pages/AddBook";
 import AdminUsers from "./pages/AdminUsers";
 import AuthorManagement from "./pages/AuthorManagement";
 import Documents from "./pages/Documents";
-import Ingestion from "./pages/Ingestion";
+import Imbibing from "./pages/Imbibing";
 import RAGSearch from "./pages/RAGSearch";
 import Summary from "./pages/Summary";
 import ProtectedRoute from "./auth/ProtectedRoute";
@@ -45,8 +45,8 @@ function AppContent() {
   <ProtectedRoute><Documents /></ProtectedRoute>
 } />
 
-<Route path="/ingestion" element={
-  <ProtectedRoute><Ingestion /></ProtectedRoute>
+<Route path="/imbibing" element={
+  <ProtectedRoute><Imbibing /></ProtectedRoute>
 } />
 
 <Route path="/rag" element={

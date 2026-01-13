@@ -236,8 +236,8 @@ h1, h2, h3 {
   border-radius: 4px;
 }
 
-/* Ingestion Stats */
-.ingestion-stats {
+/* Imbibing Stats */
+.imbibing-stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 16px;

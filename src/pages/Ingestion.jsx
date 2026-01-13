@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../api/axios";
 
-export default function Ingestion() {
+export default function Imbibing() {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(false);
   const [documents, setDocuments] = useState([]);
@@ -13,13 +13,13 @@ export default function Ingestion() {
   });
 
   useEffect(() => {
-    loadIngestionData();
+    loadImbibingData();
   }, []);
 
-  const loadIngestionData = async () => {
-    console.log('Loading ingestion data...');
+  const loadImbibingData = async () => {
+    console.log('Loading imbibing data...');
     try {
-      // Try to get documents first to show ingestion options
+      // Try to get documents first to show imbibing options
       const documentsResponse = await api.get("/documents");
       const documentsData = documentsResponse.data || [];
       setDocuments(documentsData);
@@ -27,7 +27,7 @@ export default function Ingestion() {
       // Get today's processed count from backend
       let processedToday = 0;
       try {
-        const todayCountResponse = await api.get("/ingestion/today-count");
+        const todayCountResponse = await api.get("/imbibing/today-count");
         processedToday = todayCountResponse.data.today_processed || 0;
         console.log('Today processed from API:', processedToday);
       } catch (error) {
@@ -38,7 +38,7 @@ export default function Ingestion() {
       const jobPromises = documentsData.slice(0, 5).map(async (doc) => {
         try {
           console.log(`Checking status for document ${doc.id}`);
-          const statusResponse = await api.get(`/ingestion/status/${doc.id}`);
+          const statusResponse = await api.get(`/imbibing/status/${doc.id}`);
           console.log(`Status response for doc ${doc.id}:`, statusResponse.data);
           
           const status = statusResponse.data.status || 'pending';
@@ -96,7 +96,7 @@ export default function Ingestion() {
       });
       
     } catch (error) {
-      console.error("Failed to load ingestion data:", error);
+      console.error("Failed to load imbibing data:", error);
       console.error("Error status:", error.response?.status);
       console.error("Error data:", error.response?.data);
       // Keep mock data as fallback
@@ -109,7 +109,7 @@ export default function Ingestion() {
     }
   };
 
-  const startIngestion = async () => {
+  const startImbibing = async () => {
     if (!selectedDocument) {
       alert("Please select a document to ingest");
       return;
@@ -117,13 +117,13 @@ export default function Ingestion() {
     
     setLoading(true);
     try {
-      const response = await api.post(`/ingestion/trigger/${selectedDocument}`);
-      console.log('Ingestion response:', response.data);
-      alert(`Ingestion started for document. Job ID: ${response.data.job_id}`);
-      await loadIngestionData(); // Refresh data
+      const response = await api.post(`/imbibing/trigger/${selectedDocument}`);
+      console.log('Imbibing response:', response.data);
+      alert(`Imbibing started for document. Job ID: ${response.data.job_id}`);
+      await loadImbibingData(); // Refresh data
     } catch (error) {
-      console.error("Failed to start ingestion:", error);
-      alert('Failed to start ingestion. Backend endpoint not available.');
+      console.error("Failed to start imbibing:", error);
+      alert('Failed to start imbibing. Backend endpoint not available.');
     } finally {
       setLoading(false);
     }
@@ -133,7 +133,7 @@ export default function Ingestion() {
     <div className="container">
       <div className="card">
         <div className="page-header">
-          <h2>Data Ingestion</h2>
+          <h2>Data Imbibing</h2>
           <div style={{display: 'flex', gap: '10px', alignItems: 'center'}}>
             <select
               value={selectedDocument}
@@ -150,15 +150,15 @@ export default function Ingestion() {
             </select>
             <button 
               className="btn btn-primary" 
-              onClick={startIngestion}
+              onClick={startImbibing}
               disabled={loading || !selectedDocument}
             >
-              {loading ? 'Starting...' : 'Start Ingestion'}
+              {loading ? 'Starting...' : 'Start Imbibing'}
             </button>
           </div>
         </div>
 
-        <div className="ingestion-stats">
+        <div className="imbibing-stats">
           <div className="stat-card">
             <h4>Total Documents</h4>
             <span className="stat-number">{stats.totalDocuments.toLocaleString()}</span>

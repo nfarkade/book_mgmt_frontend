@@ -3,7 +3,7 @@
 ## Overview
 **Book Management & AI RAG Platform** is a **React-based web application** that provides end-to-end management of **books, authors, genres, and documents**, along with **AI-powered Retrieval-Augmented Generation (RAG) search** and **document summarization**.
 
-The application is designed as an **enterprise-ready frontend** that integrates with an AI-enabled backend for **document ingestion, semantic search, and intelligent insights**.
+The application is designed as an **enterprise-ready frontend** that integrates with an AI-enabled backend for **document imbibing, semantic search, and intelligent insights**.
 
 ---
 
@@ -17,7 +17,7 @@ The application is designed as an **enterprise-ready frontend** that integrates 
 ### 📄 Document Intelligence
 - Upload, list, download, and delete documents
 - AI-powered document summaries
-- Document ingestion & processing pipeline
+- Document imbibing & processing pipeline
 
 ### 🤖 Generative AI (RAG)
 - Semantic document search using RAG
@@ -40,7 +40,7 @@ The application is designed as an **enterprise-ready frontend** that integrates 
 | Authors Management | Independent CRUD management |
 | Documents | Upload, manage, summarize |
 | RAG Search | AI-powered document search |
-| Ingestion | Background document processing |
+| Imbibing | Background document processing |
 | Admin | User & role management |
 
 ---
@@ -55,7 +55,7 @@ The application is designed as an **enterprise-ready frontend** that integrates 
 /documents          → Document management
 /summary            → Document summary generation
 /rag                → RAG-based search
-/ingestion          → Document ingestion tracking
+/imbibing          → Document imbibing tracking
 /admin/users        → User & role administration
 ```
 
@@ -93,7 +93,7 @@ The backend should expose APIs for:
 - Document Management
 - RAG Search
 - User & Role Management
-- Ingestion & Processing
+- Imbibing & Processing
 
 > Mock data fallback is available when backend services are unavailable.
 
@@ -124,7 +124,7 @@ The backend should expose APIs for:
 ### Installation
 ```bash
 git clone <your-repo-url>
-cd book-management-frontend
+cd book_mgmt_frontend
 npm install
 ```
 
@@ -142,12 +142,12 @@ Access the application at:
 
 ### Build Image
 ```bash
-docker build -t book-mgmt-frontend .
+docker build -t book_mgmt_frontend .
 ```
 
 ### Run Container
 ```bash
-docker run -p 3000:80 book-mgmt-frontend
+docker run -p 3000:80 book_mgmt_frontend
 ```
 
 ---
