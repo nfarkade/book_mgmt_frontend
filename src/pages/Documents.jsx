@@ -93,7 +93,7 @@ export default function Documents() {
       
       setUploadFile(null);
       const fileInput = document.querySelector('input[type="file"]');
-      if (fileInput) fileInput.value = '';
+      if (fileInput) { fileInput.value = ''; }
       await loadDocuments();
       alert('File uploaded successfully');
     } catch (error) {

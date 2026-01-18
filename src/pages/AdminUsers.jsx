@@ -396,7 +396,7 @@ export default function AdminUsers() {
                     />
                   </div>
                   <div className="form-group">
-                    <label>Role:</label>
+                    <label htmlFor="role">Role:</label>
                     <select
                       className="form-control"
                       value={newUser.role_names}
@@ -473,7 +473,7 @@ export default function AdminUsers() {
                     />
                   </div>
                   <div className="form-group">
-                    <label>Permissions:</label>
+                    <label htmlFor="permissions">Permissions:</label>
                     <div style={{display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '8px'}}>
                       <label style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
                         <input

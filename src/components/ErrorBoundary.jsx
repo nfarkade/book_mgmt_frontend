@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Config from '../config';
 
 class ErrorBoundary extends React.Component {
@@ -21,6 +22,7 @@ class ErrorBoundary extends React.Component {
     if (Config.IS_PRODUCTION) {
       console.error('Error caught by boundary:', error, errorInfo);
       // Here you would send to error tracking service like Sentry
+      // Example: Sentry.captureException(error, { contexts: { react: errorInfo } });
     }
   }
 
@@ -32,7 +34,7 @@ class ErrorBoundary extends React.Component {
             <div className="card">
               <div className="error-content">
                 <h2>Something went wrong</h2>
-                <p>We're sorry, but something unexpected happened.</p>
+                <p>We are sorry, but something unexpected happened.</p>
                 
                 {!Config.IS_PRODUCTION && (
                   <details style={{ whiteSpace: 'pre-wrap', marginTop: '20px' }}>
@@ -70,5 +72,9 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
+
+ErrorBoundary.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default ErrorBoundary;

@@ -1,53 +1,36 @@
-import Config from '../config';
+export { getErrorMessage, handleApiError, isNetworkError, isAuthError } from './errorHandler';
+export { toast } from './toast';
 
+/**
+ * Format file size to human-readable format
+ */
 export const formatFileSize = (bytes) => {
-  if (!bytes || bytes === 0) return '0 Bytes';
-  
+  if (bytes === 0) return '0 Bytes';
   const k = 1024;
   const sizes = ['Bytes', 'KB', 'MB', 'GB'];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
-  
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
 };
 
-export const formatDate = (dateString) => {
-  if (!dateString) return 'Unknown';
-  
+/**
+ * Format date to readable string
+ */
+export const formatDate = (date) => {
+  if (!date) return 'Unknown';
   try {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
+    return new Date(date).toLocaleDateString('en-US', {
       year: 'numeric',
-      month: 'short',
+      month: 'long',
       day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
     });
-  } catch (error) {
-    console.error('Date formatting error:', error);
-    return dateString;
+  } catch {
+    return date.toString();
   }
 };
 
-export const validateFile = (file) => {
-  const errors = [];
-  
-  if (!file) {
-    errors.push('No file selected');
-    return errors;
-  }
-  
-  if (file.size > Config.MAX_FILE_SIZE) {
-    errors.push(`File size exceeds ${formatFileSize(Config.MAX_FILE_SIZE)} limit`);
-  }
-  
-  const fileExtension = '.' + file.name.split('.').pop().toLowerCase();
-  if (!Config.ALLOWED_FILE_TYPES.includes(fileExtension)) {
-    errors.push(`File type ${fileExtension} not allowed. Allowed types: ${Config.ALLOWED_FILE_TYPES.join(', ')}`);
-  }
-  
-  return errors;
-};
-
+/**
+ * Debounce function
+ */
 export const debounce = (func, wait) => {
   let timeout;
   return function executedFunction(...args) {
@@ -60,11 +43,21 @@ export const debounce = (func, wait) => {
   };
 };
 
-export const generateId = () => {
-  return Date.now().toString(36) + Math.random().toString(36).substr(2);
+/**
+ * Validate email format
+ */
+export const isValidEmail = (email) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
 };
 
-export const sanitizeInput = (input) => {
-  if (typeof input !== 'string') return input;
-  return input.trim().replace(/[<>]/g, '');
+/**
+ * Safe JSON parse
+ */
+export const safeJsonParse = (str, defaultValue = null) => {
+  try {
+    return JSON.parse(str);
+  } catch {
+    return defaultValue;
+  }
 };

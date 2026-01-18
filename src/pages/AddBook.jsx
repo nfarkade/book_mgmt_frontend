@@ -82,7 +82,7 @@ export default function AddBook() {
         <h2>Add Book</h2>
         <form onSubmit={submit}>
           <div className="form-group">
-            <label>Title *</label>
+            <label htmlFor="title">Title *</label>
             <input 
               className="form-control"
               name="title"
@@ -93,7 +93,7 @@ export default function AddBook() {
             />
           </div>
           <div className="form-group">
-            <label>Author *</label>
+            <label htmlFor="author">Author *</label>
             <select 
               className="form-control"
               name="author_id"
@@ -121,7 +121,7 @@ export default function AddBook() {
             )}
           </div>
           <div className="form-group">
-            <label>Genre</label>
+            <label htmlFor="genre">Genre</label>
             <select 
               className="form-control"
               name="genre_id"
@@ -147,7 +147,7 @@ export default function AddBook() {
             )}
           </div>
           <div className="form-group">
-            <label>Year Published</label>
+            <label htmlFor="published">Year Published</label>
             <input 
               className="form-control"
               name="year_published"

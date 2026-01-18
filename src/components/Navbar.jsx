@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 import { logout } from "../api/auth";
 
-export default function Navbar() {
+export default function Navbar({ user }) {
   const handleLogout = () => {
     logout();
     window.location.href = "/login";
   };
-
 
   return (
     <nav style={{
@@ -83,13 +83,15 @@ export default function Navbar() {
           }}>
             Summary
           </Link>
-          <Link to="/admin/users" style={{
-            color: 'white',
-            textDecoration: 'none',
-            padding: '0.5rem 1rem'
-          }}>
-            Admin
-          </Link>
+          {(user?.role?.is_admin || user?.role?.permissions?.includes('admin')) && (
+            <Link to="/admin/users" style={{
+              color: 'white',
+              textDecoration: 'none',
+              padding: '0.5rem 1rem'
+            }}>
+              Admin
+            </Link>
+          )}
           <button 
             onClick={handleLogout}
             style={{
@@ -108,3 +110,16 @@ export default function Navbar() {
     </nav>
   );
 }
+
+Navbar.propTypes = {
+  user: PropTypes.shape({
+    role: PropTypes.shape({
+      is_admin: PropTypes.bool,
+      permissions: PropTypes.arrayOf(PropTypes.string),
+    }),
+  }),
+};
+
+Navbar.defaultProps = {
+  user: null,
+};

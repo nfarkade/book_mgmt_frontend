@@ -69,7 +69,7 @@ export default function RAGSearch() {
 
         {searchResponse && (
           <div className="search-info">
-            <p><strong>Query:</strong> "{searchResponse.query}"</p>
+            <p><strong>Query:</strong> {searchResponse.query}</p>
             <p><strong>Results found:</strong> {results.length}</p>
           </div>
         )}
@@ -108,7 +108,7 @@ export default function RAGSearch() {
 
         {!loading && results.length === 0 && query && searchResponse && (
           <div className="no-results">
-            <p>No results found for "{query}". Try searching for different terms like genre, author names, or book titles.</p>
+            <p>No results found for {query}. Try searching for different terms like genre, author names, or book titles.</p>
           </div>
         )}
       </div>
